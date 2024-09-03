@@ -92,6 +92,11 @@ void loop() {
     //Send message via ESP-NOW
     esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
     if (result == ESP_OK) {
+      Serial.println("send id:: "+ BOARD_ID);
+      Serial.print("Send temp:: "); Serial.println(myData.temp);
+      Serial.print("Send hum:: "); Serial.println(myData.hum);
+      Serial.print("Send readingID:: "); Serial.println(myData.readingId);
+
       Serial.println("Sent with success");
     }
     else {
