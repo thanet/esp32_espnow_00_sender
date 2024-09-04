@@ -16,7 +16,7 @@
 #define BOARD_ID 1
 unsigned long previousMillis = 0;   // Stores last time temperature was published
 const long interval = 10000;        // Interval at which to publish sensor readings
-unsigned int readingId = 0;         // Show Readind number after initial, incremental
+ int readingId = 0;         // Show Readind number after initial, incremental
 
 
 //MAC Address of the receiver 
