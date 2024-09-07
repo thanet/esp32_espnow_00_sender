@@ -84,15 +84,15 @@ void loop() {
     // Save the last time a new reading was published
     previousMillis = currentMillis;
     //Set values to send
-    myData.id = BOARD_ID;
-    myData.temp = random(25,35);
-    myData.hum = random(75,99);
+    myData.id = int(BOARD_ID);
+    myData.temp = float(random(25,35));
+    myData.hum = float(random(75,99));
     myData.readingId = readingId++;
      
     //Send message via ESP-NOW
     esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
     if (result == ESP_OK) {
-      Serial.println("send id:: "+ BOARD_ID);
+      Serial.print("send id:: "); Serial.println(int(BOARD_ID));
       Serial.print("Send temp:: "); Serial.println(myData.temp);
       Serial.print("Send hum:: "); Serial.println(myData.hum);
       Serial.print("Send readingID:: "); Serial.println(myData.readingId);
@@ -103,5 +103,5 @@ void loop() {
       Serial.println("Error sending the data");
     }
   }
-
+  delay (5000);
 }
